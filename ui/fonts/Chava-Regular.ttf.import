@@ -1,0 +1,41 @@
+[remap]
+
+importer="font_data_dynamic"
+type="FontFile"
+uid="uid://cbq0ox7ghhfjn"
+path="res://.godot/imported/Chava-Regular.ttf-81d86e474ce0c2de9a5362aaec849fed.fontdata"
+
+[deps]
+
+source_file="res://ui/fonts/Chava-Regular.ttf"
+dest_files=["res://.godot/imported/Chava-Regular.ttf-81d86e474ce0c2de9a5362aaec849fed.fontdata"]
+
+[params]
+
+Rendering=null
+antialiasing=1
+generate_mipmaps=false
+disable_embedded_bitmaps=true
+multichannel_signed_distance_field=false
+msdf_pixel_range=8
+msdf_size=48
+allow_system_fallback=true
+force_autohinter=false
+hinting=1
+subpixel_positioning=4
+keep_rounding_remainders=true
+oversampling=0.0
+Fallbacks=null
+fallbacks=[]
+Compress=null
+compress=true
+preload=[{
+"chars": [33, 35, 34, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 113, 112, 64, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 61, 63, 46, 47, 62, 60, 77, 79, 78, 76, 75, 74, 73, 72, 71, 70, 69, 68, 67, 66, 65, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 111, 110, 109, 107, 106, 105, 104, 103, 102, 101, 97, 98, 100, 99, 115, 114, 116, 117, 118, 119, 120, 121, 122, 123, 124, 108, 125, 126],
+"glyphs": [],
+"name": "New Configuration",
+&"size": Vector2i(5, 0),
+&"variation_embolden": 0.0
+}]
+language_support={}
+script_support={}
+opentype_features={}

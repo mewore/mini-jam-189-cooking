@@ -11,16 +11,16 @@ config_version=5
 [application]
 
 config/name="Mini Jam 189: Cooking"
-run/main_scene="uid://psppm3fs1ume"
+run/main_scene="uid://c3pa7rfitntc1"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
 [display]
 
 window/size/viewport_width=288
-window/size/viewport_height=162
+window/size/viewport_height=192
 window/size/window_width_override=1152
-window/size/window_height_override=648
+window/size/window_height_override=768
 window/stretch/mode="viewport"
 window/stretch/scale_mode="integer"
 

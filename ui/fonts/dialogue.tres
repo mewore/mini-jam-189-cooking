@@ -1,0 +1,7 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://vbf5mtnxgkqh"]
+
+[ext_resource type="FontFile" uid="uid://doaepsjh2m5hy" path="res://ui/fonts/fs-pixel-sans-unicode-regular.ttf" id="1_mvbp0"]
+
+[resource]
+default_font = ExtResource("1_mvbp0")
+default_font_size = 16

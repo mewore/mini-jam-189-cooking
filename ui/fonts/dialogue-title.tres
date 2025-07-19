@@ -1,0 +1,7 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://cyb83xrb0wiig"]
+
+[ext_resource type="FontFile" uid="uid://dw3cjl28jx3ia" path="res://ui/fonts/Wendy-Neue.ttf" id="1_kg1v7"]
+
+[resource]
+default_font = ExtResource("1_kg1v7")
+default_font_size = 16

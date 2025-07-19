@@ -1,7 +1,74 @@
-[gd_scene format=3 uid="uid://psppm3fs1ume"]
+[gd_scene load_steps=5 format=3 uid="uid://c3pa7rfitntc1"]
+
+[ext_resource type="Theme" uid="uid://vbf5mtnxgkqh" path="res://ui/fonts/dialogue.tres" id="1_yqjtg"]
+[ext_resource type="Texture2D" uid="uid://cvxwhfhilamat" path="res://ui/crucial/simcity2000monster.png" id="2_lnu2h"]
+[ext_resource type="Theme" uid="uid://cyb83xrb0wiig" path="res://ui/fonts/dialogue-title.tres" id="3_lnu2h"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_lbhrr"]
+line_spacing = -4.0
 
 [node name="Game" type="Node2D"]
 
-[node name="TableThing" type="Polygon2D" parent="."]
-color = Color(0.78, 0.75972, 0.7332, 1)
-polygon = PackedVector2Array(0, 104, 288, 104, 288, 168, 0, 168)
+[node name="Polygon2D" type="Polygon2D" parent="."]
+position = Vector2(8, 104)
+color = Color(0, 0.426014, 0.689958, 1)
+polygon = PackedVector2Array(0, 0, 8, 0, 8, 8, 0, 8)
+
+[node name="Polygon2D2" type="Polygon2D" parent="."]
+position = Vector2(0, 136)
+color = Color(0.114897, 0.114897, 0.114897, 1)
+polygon = PackedVector2Array(0, 0, 288, 0, 288, 56, 0, 56)
+
+[node name="DialoguePanel" type="HBoxContainer" parent="."]
+offset_top = 136.0
+offset_right = 288.0
+offset_bottom = 192.0
+theme = ExtResource("1_yqjtg")
+alignment = 1
+
+[node name="Spacer" type="Control" parent="DialoguePanel"]
+custom_minimum_size = Vector2(4, 0)
+layout_mode = 2
+
+[node name="SpeakerAvatar" type="TextureRect" parent="DialoguePanel"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("2_lnu2h")
+expand_mode = 1
+
+[node name="Spacer3" type="Control" parent="DialoguePanel"]
+custom_minimum_size = Vector2(4, 0)
+layout_mode = 2
+
+[node name="TextContainer" type="VBoxContainer" parent="DialoguePanel"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Title" type="HBoxContainer" parent="DialoguePanel/TextContainer"]
+layout_mode = 2
+theme = ExtResource("3_lnu2h")
+
+[node name="SpeakerName" type="Label" parent="DialoguePanel/TextContainer/Title"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("3_lnu2h")
+text = "SomeFunny Alien"
+clip_text = true
+
+[node name="Timer" type="Label" parent="DialoguePanel/TextContainer/Title"]
+layout_mode = 2
+text = "00:21"
+
+[node name="Dialogue" type="Label" parent="DialoguePanel/TextContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_vertical = 3
+text = "The lazy brown fox quickly jumped over the fence. The lazy brown fox quickly jumped over the fence. The lazy brown fox quickly jumped over the fence. The lazy brown fox quickly jumped over the fence. The lazy brown fox quickly jumped over the fence."
+label_settings = SubResource("LabelSettings_lbhrr")
+autowrap_mode = 2
+text_overrun_behavior = 3
+
+[node name="Spacer2" type="Control" parent="DialoguePanel"]
+layout_mode = 2

@@ -2,18 +2,18 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://cr325lx6yov0u"
-path="res://.godot/imported/Pixel.ttf-a67407a52aeb1ad6608a921d77c0f837.fontdata"
+uid="uid://cr7xhwyf5m7h1"
+path="res://.godot/imported/Chava-Regular.otf-b0065dc9a32898dcdf0a0c33ff4b6999.fontdata"
 
 [deps]
 
-source_file="res://ui/fonts/Pixel.ttf"
-dest_files=["res://.godot/imported/Pixel.ttf-a67407a52aeb1ad6608a921d77c0f837.fontdata"]
+source_file="res://ui/fonts/Chava-Regular.otf"
+dest_files=["res://.godot/imported/Chava-Regular.otf-b0065dc9a32898dcdf0a0c33ff4b6999.fontdata"]
 
 [params]
 
 Rendering=null
-antialiasing=0
+antialiasing=1
 generate_mipmaps=false
 disable_embedded_bitmaps=true
 multichannel_signed_distance_field=false
@@ -29,13 +29,7 @@ Fallbacks=null
 fallbacks=[]
 Compress=null
 compress=true
-preload=[{
-"chars": [],
-"glyphs": [],
-"name": "New Configuration",
-"size": Vector2i(16, 0),
-&"variation_embolden": 0.0
-}]
+preload=[]
 language_support={}
 script_support={}
 opentype_features={}

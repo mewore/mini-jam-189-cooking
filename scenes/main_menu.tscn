@@ -14,7 +14,6 @@ alignment = 1
 self_modulate = Color(1, 1, 1, 0.141176)
 position = Vector2(139, 144)
 rotation = -0.289732
-scale = Vector2(1, 1)
 texture = ExtResource("2_ekxnf")
 
 [node name="Button" type="Button" parent="."]
