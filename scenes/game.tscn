@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://psppm3fs1ume"]
+
+[node name="Game" type="Node2D"]
+
+[node name="TableThing" type="Polygon2D" parent="."]
+color = Color(0.78, 0.75972, 0.7332, 1)
+polygon = PackedVector2Array(0, 104, 288, 104, 288, 168, 0, 168)

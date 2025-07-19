@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://dpnujkdbefr4f"]
+
+[ext_resource type="Theme" uid="uid://cfi3jnjmt80" path="res://ui/fonts/menu.tres" id="1_l6cm7"]
+[ext_resource type="Texture2D" uid="uid://cvxwhfhilamat" path="res://ui/crucial/simcity2000monster.png" id="2_ekxnf"]
+
+[node name="MainMenu" type="VBoxContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource("1_l6cm7")
+alignment = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+self_modulate = Color(1, 1, 1, 0.141176)
+position = Vector2(139, 144)
+rotation = -0.289732
+scale = Vector2(1, 1)
+texture = ExtResource("2_ekxnf")
+
+[node name="Button" type="Button" parent="."]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Start"

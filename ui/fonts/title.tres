@@ -1,0 +1,6 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://cfdfcdkw67e7j"]
+
+[ext_resource type="FontFile" uid="uid://crg3pdovncdp8" path="res://ui/fonts/saturno.ttf" id="1_wc8e2"]
+
+[resource]
+default_font = ExtResource("1_wc8e2")
