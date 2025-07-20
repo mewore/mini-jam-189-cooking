@@ -1,0 +1,80 @@
+[start]
+
+
+
+G¬ort: 
+Hi. 
+
+G: 
+This is your training. You will be learning to make meals for my species. Welcome to GLORT-cafe.
+Player:
+ … 
+ 
+G:
+You will be paid in… experience. :D
+
+P:
+. . .
+
+G:
+Ok. Let’s get started. 
+
+G:
+You’ll be making a glurger. It’s a 3 step process.
+
+G:
+Gather the ingredients. ???. Profit. 
+
+G:
+I look forwards to trying your… cooking. Yes. 
+
+
+
+[timer ends]
+
+
+
+
+G:
+Ok. 
+
+G:
+I’ve seen enough. 
+
+G: 
+Here at our glort cafe you are expected to fill several orders at once. 
+
+G: 
+We will compensate you for your work. Please wait for your check in the mail before you come back. 
+
+
+
+[success]
+
+
+
+G:
+:O
+
+G:
+That looks good. 
+………
+
+(remove the food object from the overworld)
+(play eating animation if I made one -sol)
+
+G:
+*the alien’s tentacle absorbs your provided glurger*
+*It appears less voracious. For now.*
+
+(display ending credit textbox/thanks for playing.)
+
+Thanks for playing! 
+
+Programming/engine:
+meoware
+Dialogue/Pixelart/OST:
+solteris
+fx:
+Hardronix
+
