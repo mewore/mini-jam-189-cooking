@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://dgolpul7ixkg5"]
+[gd_scene load_steps=7 format=3 uid="uid://dgolpul7ixkg5"]
 
 [ext_resource type="Theme" uid="uid://vbf5mtnxgkqh" path="res://ui/fonts/dialogue.tres" id="1_6hs1l"]
-[ext_resource type="Texture2D" uid="uid://de102cdbg1l51" path="res://ui/crucial/portraits/ui-alien.png" id="2_2iib1"]
+[ext_resource type="Texture2D" uid="uid://cb77lq7vtgq3w" path="res://ui/crucial/portraits/alien-chew.tres" id="2_6hs1l"]
+[ext_resource type="Script" uid="uid://tf5u63bi7bwb" path="res://ui/speaker_avatar.gd" id="3_2iib1"]
 [ext_resource type="Theme" uid="uid://cyb83xrb0wiig" path="res://ui/fonts/dialogue-title.tres" id="3_fhdyl"]
 
 [sub_resource type="ImageTexture" id="ImageTexture_lbhrr"]
@@ -25,7 +26,10 @@ custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-texture = ExtResource("2_2iib1")
+texture = ExtResource("2_6hs1l")
+script = ExtResource("3_2iib1")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="SpeakerAvatar"]
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 2
