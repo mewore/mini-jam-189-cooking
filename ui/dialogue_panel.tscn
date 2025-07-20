@@ -1,0 +1,68 @@
+[gd_scene load_steps=6 format=3 uid="uid://dgolpul7ixkg5"]
+
+[ext_resource type="Theme" uid="uid://vbf5mtnxgkqh" path="res://ui/fonts/dialogue.tres" id="1_6hs1l"]
+[ext_resource type="Texture2D" uid="uid://de102cdbg1l51" path="res://ui/crucial/portraits/ui-alien.png" id="2_2iib1"]
+[ext_resource type="Theme" uid="uid://cyb83xrb0wiig" path="res://ui/fonts/dialogue-title.tres" id="3_fhdyl"]
+
+[sub_resource type="ImageTexture" id="ImageTexture_lbhrr"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_lbhrr"]
+line_spacing = -6.0
+
+[node name="DialoguePanel" type="HBoxContainer"]
+offset_top = 136.0
+offset_right = 288.0
+offset_bottom = 192.0
+theme = ExtResource("1_6hs1l")
+alignment = 1
+
+[node name="Spacer" type="Control" parent="."]
+custom_minimum_size = Vector2(4, 0)
+layout_mode = 2
+
+[node name="SpeakerAvatar" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("2_2iib1")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 2
+texture = SubResource("ImageTexture_lbhrr")
+
+[node name="Spacer3" type="Control" parent="."]
+custom_minimum_size = Vector2(4, 0)
+layout_mode = 2
+
+[node name="TextContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Title" type="HBoxContainer" parent="TextContainer"]
+layout_mode = 2
+theme = ExtResource("3_fhdyl")
+
+[node name="SpeakerName" type="Label" parent="TextContainer/Title"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("3_fhdyl")
+text = "G¬ort"
+clip_text = true
+metadata/_edit_lock_ = true
+
+[node name="Timer" type="Label" parent="TextContainer/Title"]
+layout_mode = 2
+text = "--:--"
+
+[node name="Dialogue" type="Label" parent="TextContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_vertical = 3
+text = "Bring me... sustanance. Human. :D"
+label_settings = SubResource("LabelSettings_lbhrr")
+autowrap_mode = 2
+text_overrun_behavior = 3
+
+[node name="Spacer2" type="Control" parent="."]
+layout_mode = 2

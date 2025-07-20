@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://c1387vm7fqme8"
-path="res://.godot/imported/4mogus.png-e7e6411fbeedf1a442d66a977eda5450.ctex"
+path="res://.godot/imported/4mogus.png-bb3ffba5f66e65e6f7669287965548dd.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://entities/4mogus.png"
-dest_files=["res://.godot/imported/4mogus.png-e7e6411fbeedf1a442d66a977eda5450.ctex"]
+source_file="res://entities/am0gus/4mogus.png"
+dest_files=["res://.godot/imported/4mogus.png-bb3ffba5f66e65e6f7669287965548dd.ctex"]
 
 [params]
 

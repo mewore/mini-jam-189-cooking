@@ -1,0 +1,4 @@
+[gd_scene format=3 uid="uid://cxnkkv0s6y42j"]
+
+[node name="PlaceholderSprite" type="Polygon2D"]
+polygon = PackedVector2Array(0, 0, 0, 8, 8, 8, 8, 0)

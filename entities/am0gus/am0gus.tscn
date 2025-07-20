@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://bjmywyaxrloh8"]
+
+[ext_resource type="Script" uid="uid://doxh3u0tpoiws" path="res://entities/am0gus/am0gus.gd" id="1_3wrgg"]
+[ext_resource type="Texture2D" uid="uid://c1387vm7fqme8" path="res://entities/am0gus/4mogus.png" id="1_aohqt"]
+
+[node name="Am0gus" type="Node2D"]
+script = ExtResource("1_3wrgg")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_aohqt")
+centered = false

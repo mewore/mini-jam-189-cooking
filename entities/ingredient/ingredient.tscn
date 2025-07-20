@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://di20224ttjwiu"]
+
+[ext_resource type="Script" uid="uid://cadvy0aa2yn3x" path="res://entities/ingredient/ingredient.gd" id="1_w0iip"]
+[ext_resource type="PackedScene" uid="uid://cxnkkv0s6y42j" path="res://util/placeholder_sprite.tscn" id="2_wd34q"]
+[ext_resource type="PackedScene" uid="uid://bxraiycjoq4mj" path="res://util/placeholder_outline.tscn" id="3_2g768"]
+
+[node name="Ingredient" type="Node2D"]
+script = ExtResource("1_w0iip")
+
+[node name="PlaceholderSprite" parent="." instance=ExtResource("2_wd34q")]
+color = Color(0.691443, 1, 0, 1)
+
+[node name="PlaceholderOutline" parent="." instance=ExtResource("3_2g768")]
+default_color = Color(0, 1, 0.444934, 1)

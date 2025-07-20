@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://ltywtkopo1ws"]
+
+[ext_resource type="PackedScene" uid="uid://cxnkkv0s6y42j" path="res://util/placeholder_sprite.tscn" id="1_abrql"]
+[ext_resource type="Script" uid="uid://cluaqrr2x6q3q" path="res://entities/player/player.gd" id="1_sglur"]
+[ext_resource type="PackedScene" uid="uid://bxraiycjoq4mj" path="res://util/placeholder_outline.tscn" id="2_sglur"]
+
+[node name="Player" type="Node2D"]
+script = ExtResource("1_sglur")
+SPEED = 8.0
+
+[node name="PlaceholderSprite" parent="." instance=ExtResource("1_abrql")]
+color = Color(0.401383, 0.80901, 0.894964, 1)
+
+[node name="PlaceholderOutline" parent="." instance=ExtResource("2_sglur")]
+default_color = Color(0.223797, 0.493138, 0.675876, 1)

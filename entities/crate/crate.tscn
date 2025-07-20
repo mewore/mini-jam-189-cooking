@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://cvaf5axpeupq5"]
+
+[ext_resource type="Script" uid="uid://dr2sm02r1klxj" path="res://entities/crate/crate.gd" id="1_5o21e"]
+[ext_resource type="PackedScene" uid="uid://cxnkkv0s6y42j" path="res://util/placeholder_sprite.tscn" id="2_dgg7m"]
+[ext_resource type="PackedScene" uid="uid://bxraiycjoq4mj" path="res://util/placeholder_outline.tscn" id="3_6baus"]
+
+[node name="Crate" type="Node2D"]
+script = ExtResource("1_5o21e")
+
+[node name="PlaceholderSprite" parent="." instance=ExtResource("2_dgg7m")]
+color = Color(0.687591, 0.541626, 0.463997, 1)
+
+[node name="PlaceholderOutline" parent="." instance=ExtResource("3_6baus")]
+default_color = Color(0.361617, 0.231858, 0.154071, 1)
