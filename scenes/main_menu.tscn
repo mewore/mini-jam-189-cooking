@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://c8fmk6ilheeq1" path="res://ui/buttons/start-button/start-pressed.png" id="4_jk1qb"]
 [ext_resource type="Texture2D" uid="uid://c7bo3s5ll6y72" path="res://ui/buttons/start-button/start-hover.png" id="5_5dd4i"]
 [ext_resource type="Script" uid="uid://be8kq6qfnn6dc" path="res://ui/buttons/start-button/start_button.gd" id="6_oa1go"]
-[ext_resource type="AudioStream" uid="uid://b7kck3aslbjk8" path="res://ui/buttons/start-button/sfx-click.wav" id="6_rtw2f"]
+[ext_resource type="AudioStream" uid="uid://bf8cwsi02ar06" path="res://ui/buttons/click-clack.wav" id="8_tbmy8"]
 
 [node name="MainMenu" type="VBoxContainer"]
 anchors_preset = 15
@@ -33,7 +33,7 @@ texture_hover = ExtResource("5_5dd4i")
 script = ExtResource("6_oa1go")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="StartButton"]
-stream = ExtResource("6_rtw2f")
+stream = ExtResource("8_tbmy8")
 playback_type = 1
 
 [node name="Overlay" type="Polygon2D" parent="."]
