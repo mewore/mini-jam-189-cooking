@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://dgolpul7ixkg5"]
+[gd_scene load_steps=8 format=3 uid="uid://dgolpul7ixkg5"]
 
 [ext_resource type="Theme" uid="uid://vbf5mtnxgkqh" path="res://ui/fonts/dialogue.tres" id="1_6hs1l"]
-[ext_resource type="Texture2D" path="res://ui/crucial/portraits/alien-chew.tres" id="2_6hs1l"]
+[ext_resource type="Texture2D" uid="uid://cb77lq7vtgq3w" path="res://ui/crucial/portraits/alien-chew.tres" id="2_6hs1l"]
+[ext_resource type="Script" uid="uid://vvec7oo2kdwu" path="res://ui/dialogue_panel.gd" id="2_fhdyl"]
 [ext_resource type="Script" uid="uid://tf5u63bi7bwb" path="res://ui/speaker_avatar.gd" id="3_2iib1"]
 [ext_resource type="Theme" uid="uid://cyb83xrb0wiig" path="res://ui/fonts/dialogue-title.tres" id="3_fhdyl"]
 
@@ -16,6 +17,8 @@ offset_right = 288.0
 offset_bottom = 192.0
 theme = ExtResource("1_6hs1l")
 alignment = 1
+script = ExtResource("2_fhdyl")
+alien_avatar = ExtResource("2_6hs1l")
 
 [node name="Background" type="Polygon2D" parent="."]
 color = Color(0.114897, 0.114897, 0.114897, 1)
@@ -59,7 +62,7 @@ text = "G¬ort"
 clip_text = true
 metadata/_edit_lock_ = true
 
-[node name="Timer" type="Label" parent="TextContainer/Title"]
+[node name="TimeText" type="Label" parent="TextContainer/Title"]
 layout_mode = 2
 text = "--:--"
 
@@ -74,3 +77,6 @@ text_overrun_behavior = 3
 
 [node name="Spacer2" type="Control" parent="."]
 layout_mode = 2
+
+[node name="TextTimer" type="Timer" parent="."]
+one_shot = true
