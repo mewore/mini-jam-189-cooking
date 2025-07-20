@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://ltywtkopo1ws"]
+[gd_scene load_steps=7 format=3 uid="uid://ltywtkopo1ws"]
 
 [ext_resource type="PackedScene" uid="uid://cxnkkv0s6y42j" path="res://util/placeholder_sprite.tscn" id="1_abrql"]
 [ext_resource type="Script" uid="uid://cluaqrr2x6q3q" path="res://entities/player/player.gd" id="1_sglur"]
@@ -8,6 +8,9 @@
 [sub_resource type="Curve" id="Curve_bls4j"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 2
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bls4j"]
+radius = 4.0
 
 [node name="Player" type="Node2D"]
 script = ExtResource("1_sglur")
@@ -48,3 +51,14 @@ one_shot = true
 [node name="DashInputLinger" type="Timer" parent="."]
 wait_time = 0.1
 one_shot = true
+
+[node name="InteractionDetector" type="Area2D" parent="."]
+position = Vector2(4, 4)
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionDetector"]
+shape = SubResource("CircleShape2D_bls4j")
+
+[connection signal="area_entered" from="InteractionDetector" to="." method="_on_interaction_detector_area_entered"]
+[connection signal="area_exited" from="InteractionDetector" to="." method="_on_interaction_detector_area_exited"]

@@ -2,13 +2,10 @@ class_name Player
 
 extends Node2D
 
-@export var top_left: Node2D
-@export var bottom_right: Node2D
-@export var CELL_SIZE := 8
 @export var DASH_STEPS := 10
 @export var SPEED: float = 8
 @export var DASH_SPEED: float = 24
-@export_node_path("TileMapLayer") var map: NodePath
+@export_node_path("CellMap") var cell_map: NodePath
 
 @onready var sprite_root: SpriteRoot = get_node("SpriteRoot")
 @onready var walking_sound_player: AudioStreamPlayer = get_node("WalkingSoundPlayer")
@@ -16,6 +13,9 @@ extends Node2D
 @onready var dash_cooldown_timer: Timer = get_node("DashCooldown")
 @onready var dash_input_linger_timer: Timer = get_node("DashInputLinger")
 @onready var dash_particles: CPUParticles2D = get_node("SpriteRoot/DashParticles")
+
+var nearby_area: Node
+var cell_map_node: CellMap
 
 var direction_priority := [
 	Vector2i.LEFT,
@@ -38,28 +38,18 @@ var step_queue := []
 var steps_remaining := 0
 var step_completion := 0.0
 
-var top_left_cell := Vector2i.MIN
-var bottom_right_cell := Vector2i.MAX
-
-var map_node: TileMapLayer
-
 var last_requested_dash_at: int = -999999999
 
-func _ready() -> void:
-	current_cell = (position / CELL_SIZE).round()
-	if top_left:
-		top_left_cell = (get_parent().to_local(top_left.global_position) / CELL_SIZE).round()
-	if bottom_right:
-		bottom_right_cell = (get_parent().to_local(bottom_right.global_position) / CELL_SIZE).round()
-	if map:
-		map_node = get_node(map)
 
-func direction_is_possible(direction: Vector2i) -> bool:
-	var target := current_cell + direction
-	if map_node and map_node.get_cell_source_id(target) >= 0:
-		return false
-	return target.x >= top_left_cell.x and target.x < bottom_right_cell.x \
-		and target.y >= top_left_cell.y and target.y < bottom_right_cell.y
+func _ready() -> void:
+	if cell_map:
+		cell_map_node = get_node(cell_map)
+	current_cell = cell_map_node.get_node_cell(self) if cell_map_node else Vector2i.ZERO
+
+
+func is_direction_possible(direction: Vector2i) -> bool:
+	return cell_map_node.is_cell_free(current_cell + move_direction + direction) if cell_map_node else true
+
 
 func _unhandled_input(event: InputEvent) -> void:
 	var dir_index_to_hoist := -1
@@ -76,9 +66,10 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action("dash"):
 		dash_input_linger_timer.start()
 
+
 func pick_move_direction() -> Vector2i:
 	var input_dir = Vector2i.ZERO
-	while not step_queue.is_empty() and not direction_is_possible(step_queue.front()):
+	while not step_queue.is_empty() and not is_direction_possible(step_queue.front()):
 		step_queue.pop_front()
 
 	if not step_queue.is_empty():
@@ -87,13 +78,14 @@ func pick_move_direction() -> Vector2i:
 	for dir_index in range(direction_priority.size()):
 		var direction: Vector2i = direction_priority[dir_index]
 		var input_name: StringName = DIRECTION_INPUTS.get(direction)
-		if Input.is_action_pressed(input_name) and direction_is_possible(direction):
+		if Input.is_action_pressed(input_name) and is_direction_possible(direction):
 			return direction
 			
-	if steps_remaining > 0 and direction_is_possible(latest_direction):
+	if steps_remaining > 0 and is_direction_possible(latest_direction):
 		return latest_direction
 	
 	return Vector2i.ZERO
+
 
 func _process(_delta: float) -> void:
 	if not move_direction:
@@ -107,7 +99,7 @@ func _process(_delta: float) -> void:
 	
 	if not dash_input_linger_timer.is_stopped() and latest_direction \
 		and dash_cooldown_timer.is_stopped() \
-		and direction_is_possible(latest_direction):
+		and is_direction_possible(latest_direction):
 			move_direction = latest_direction
 			latest_direction = move_direction
 			steps_remaining = DASH_STEPS
@@ -120,16 +112,24 @@ func _process(_delta: float) -> void:
 	sprite_root.shaking = steps_remaining > 0
 	dash_particles.emitting = not dash_timer.is_stopped()
 
+
 func _physics_process(delta: float) -> void:
 	if steps_remaining > 0:
 		var dash_speed_coeff := 0.0 if dash_timer.is_stopped() else dash_timer.time_left / dash_timer.wait_time
 		var speed := SPEED * (1.0 - dash_speed_coeff) + DASH_SPEED * dash_speed_coeff
 		step_completion = min(step_completion + delta * speed, 1.0)
-		position = Vector2(current_cell) * CELL_SIZE + \
-			step_completion * CELL_SIZE * move_direction
+		if cell_map_node:
+			position = cell_map_node.interpolate_pos(current_cell, move_direction, step_completion)
 		if step_completion >= 1.0:
 			current_cell += move_direction
 			move_direction = Vector2i.ZERO
-			print("Completed step ", steps_remaining, " -> ", steps_remaining - 1)
 			steps_remaining -= 1
 			step_completion = 0
+
+
+func _on_interaction_detector_area_entered(area: Area2D) -> void:
+	nearby_area = area
+
+
+func _on_interaction_detector_area_exited(area: Area2D) -> void:
+	nearby_area = null

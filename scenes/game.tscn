@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=4 uid="uid://c3pa7rfitntc1"]
+[gd_scene load_steps=13 format=4 uid="uid://c3pa7rfitntc1"]
 
 [ext_resource type="PackedScene" uid="uid://dgolpul7ixkg5" path="res://ui/dialogue_panel.tscn" id="1_lnu2h"]
 [ext_resource type="Script" uid="uid://mwx1g6f1sx6a" path="res://scenes/game.gd" id="1_p57ef"]
@@ -6,10 +6,20 @@
 [ext_resource type="PackedScene" uid="uid://cvaf5axpeupq5" path="res://entities/crate/crate.tscn" id="4_iywne"]
 [ext_resource type="PackedScene" uid="uid://di20224ttjwiu" path="res://entities/ingredient/ingredient.tscn" id="4_lbhrr"]
 [ext_resource type="PackedScene" uid="uid://ltywtkopo1ws" path="res://entities/player/player.tscn" id="5_iywne"]
+[ext_resource type="Script" uid="uid://cm11lgeuf7usq" path="res://environment/cell_map.gd" id="6_0tnpc"]
 [ext_resource type="TileSet" uid="uid://balxsn8ahaky" path="res://environment/tileset.tres" id="7_u5sy4"]
+[ext_resource type="Theme" uid="uid://vbf5mtnxgkqh" path="res://ui/fonts/dialogue.tres" id="8_gee14"]
+[ext_resource type="PackedScene" uid="uid://bmjrutbsvvruy" path="res://entities/interaction/interaction_area.tscn" id="9_vtaks"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vtaks"]
+radius = 24.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_vtaks"]
+font_color = Color(0.14902, 0.160784, 0.364706, 1)
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_p57ef")
+interaction_hint_opacity_damping = 4.0
 
 [node name="DialoguePanel" parent="." instance=ExtResource("1_lnu2h")]
 z_index = 5
@@ -21,16 +31,101 @@ position = Vector2(224, 24)
 [node name="Ingredient" parent="." instance=ExtResource("4_lbhrr")]
 position = Vector2(88, 32)
 
-[node name="Player" parent="." node_paths=PackedStringArray("top_left", "bottom_right") instance=ExtResource("5_iywne")]
-position = Vector2(160, 8)
-top_left = NodePath("../TileMap/TopLeft")
-bottom_right = NodePath("../TileMap/BottomRight")
+[node name="Player" parent="." instance=ExtResource("5_iywne")]
+position = Vector2(152, 16)
+cell_map = NodePath("../CellMap")
+
+[node name="MovementHint" type="Node2D" parent="."]
+position = Vector2(144, 8)
+
+[node name="CellMap" type="Node2D" parent="." node_paths=PackedStringArray("top_left", "bottom_right")]
+script = ExtResource("6_0tnpc")
+top_left = NodePath("TopLeft")
+bottom_right = NodePath("BottomRight")
 map = NodePath("../TileMap")
+
+[node name="TopLeft" type="Marker2D" parent="CellMap"]
+position = Vector2(8, 8)
+
+[node name="BottomRight" type="Marker2D" parent="CellMap"]
+position = Vector2(248, 136)
 
 [node name="Crates" type="Node2D" parent="."]
 
 [node name="Crate" parent="Crates" instance=ExtResource("4_iywne")]
-position = Vector2(16, 120)
+position = Vector2(112, 128)
+
+[node name="Crate2" parent="Crates" instance=ExtResource("4_iywne")]
+position = Vector2(152, 96)
+
+[node name="Crate3" parent="Crates" instance=ExtResource("4_iywne")]
+position = Vector2(8, 48)
+
+[node name="Crate4" parent="Crates" instance=ExtResource("4_iywne")]
+position = Vector2(8, 8)
+
+[node name="Crate5" parent="Crates" instance=ExtResource("4_iywne")]
+position = Vector2(48, 8)
+
+[node name="Crate6" parent="Crates" instance=ExtResource("4_iywne")]
+position = Vector2(8, 128)
+
+[node name="Crate7" parent="Crates" instance=ExtResource("4_iywne")]
+position = Vector2(192, 128)
+
+[node name="Crate8" parent="Crates" instance=ExtResource("4_iywne")]
+position = Vector2(192, 96)
+
+[node name="Crate9" parent="Crates" instance=ExtResource("4_iywne")]
+position = Vector2(160, 96)
+
+[node name="Crate10" parent="Crates" instance=ExtResource("4_iywne")]
+position = Vector2(168, 96)
+
+[node name="Crate11" parent="Crates" instance=ExtResource("4_iywne")]
+position = Vector2(176, 96)
+
+[node name="Crate12" parent="Crates" instance=ExtResource("4_iywne")]
+position = Vector2(184, 96)
+
+[node name="Crate13" parent="Crates" instance=ExtResource("4_iywne")]
+position = Vector2(8, 56)
+
+[node name="Crate14" parent="Crates" instance=ExtResource("4_iywne")]
+position = Vector2(8, 64)
+
+[node name="Crate15" parent="Crates" instance=ExtResource("4_iywne")]
+position = Vector2(8, 72)
+
+[node name="Crate16" parent="Crates" instance=ExtResource("4_iywne")]
+position = Vector2(8, 80)
+
+[node name="Crate17" parent="Crates" instance=ExtResource("4_iywne")]
+position = Vector2(8, 16)
+
+[node name="Crate18" parent="Crates" instance=ExtResource("4_iywne")]
+position = Vector2(8, 24)
+
+[node name="Crate19" parent="Crates" instance=ExtResource("4_iywne")]
+position = Vector2(8, 32)
+
+[node name="Crate22" parent="Crates" instance=ExtResource("4_iywne")]
+position = Vector2(24, 48)
+
+[node name="Crate25" parent="Crates" instance=ExtResource("4_iywne")]
+position = Vector2(24, 56)
+
+[node name="Crate26" parent="Crates" instance=ExtResource("4_iywne")]
+position = Vector2(24, 64)
+
+[node name="Crate28" parent="Crates" instance=ExtResource("4_iywne")]
+position = Vector2(24, 72)
+
+[node name="Crate27" parent="Crates" instance=ExtResource("4_iywne")]
+position = Vector2(56, 8)
+
+[node name="Crate30" parent="Crates" instance=ExtResource("4_iywne")]
+position = Vector2(64, 8)
 
 [node name="TileMap" type="TileMapLayer" parent="."]
 use_parent_material = true
@@ -38,8 +133,93 @@ tile_map_data = PackedByteArray("AAAAAAoAAAABAAAAAAAAAAsAAAABAAAAAAAAAAwAAAABAAA
 tile_set = ExtResource("7_u5sy4")
 collision_enabled = false
 
-[node name="TopLeft" type="Marker2D" parent="TileMap"]
-position = Vector2(8, 8)
+[node name="UnusedCollisionMap" type="TileMapLayer" parent="."]
+visible = false
+tile_set = ExtResource("7_u5sy4")
 
-[node name="BottomRight" type="Marker2D" parent="TileMap"]
-position = Vector2(248, 136)
+[node name="InteractionAreas" type="Node2D" parent="."]
+
+[node name="BossArea" parent="InteractionAreas" instance=ExtResource("9_vtaks")]
+position = Vector2(224, 24)
+speaker = 1
+
+[node name="CustomerArea" parent="InteractionAreas" instance=ExtResource("9_vtaks")]
+position = Vector2(248, 72)
+speaker = 2
+
+[node name="HintPos" parent="InteractionAreas/CustomerArea" index="0"]
+position = Vector2(-16, -16)
+
+[node name="CrateArea" parent="InteractionAreas" instance=ExtResource("9_vtaks")]
+position = Vector2(24, 72)
+speaker = 3
+
+[node name="HintPos" parent="InteractionAreas/CrateArea" index="0"]
+position = Vector2(-16, -16)
+
+[node name="CollisionShape2D" parent="InteractionAreas/CrateArea" index="1"]
+shape = SubResource("CircleShape2D_vtaks")
+
+[node name="CrateArea2" parent="InteractionAreas" instance=ExtResource("9_vtaks")]
+position = Vector2(0, 24)
+speaker = 3
+
+[node name="HintPos" parent="InteractionAreas/CrateArea2" index="0"]
+position = Vector2(32, -8)
+
+[node name="CollisionShape2D" parent="InteractionAreas/CrateArea2" index="1"]
+shape = SubResource("CircleShape2D_vtaks")
+
+[node name="CrateArea3" parent="InteractionAreas" instance=ExtResource("9_vtaks")]
+position = Vector2(64, 8)
+speaker = 3
+
+[node name="HintPos" parent="InteractionAreas/CrateArea3" index="0"]
+position = Vector2(24, 8)
+
+[node name="CrateArea4" parent="InteractionAreas" instance=ExtResource("9_vtaks")]
+position = Vector2(176, 112)
+speaker = 3
+
+[node name="HintPos" parent="InteractionAreas/CrateArea4" index="0"]
+position = Vector2(16, 0)
+
+[node name="CollisionShape2D" parent="InteractionAreas/CrateArea4" index="1"]
+shape = SubResource("CircleShape2D_vtaks")
+
+[node name="CrateArea5" parent="InteractionAreas" instance=ExtResource("9_vtaks")]
+position = Vector2(8, 136)
+speaker = 3
+
+[node name="HintPos" parent="InteractionAreas/CrateArea5" index="0"]
+position = Vector2(8, -24)
+
+[node name="CrateArea6" parent="InteractionAreas" instance=ExtResource("9_vtaks")]
+position = Vector2(104, 136)
+speaker = 3
+
+[node name="HintPos" parent="InteractionAreas/CrateArea6" index="0"]
+position = Vector2(-8, -24)
+
+[node name="InteractHint" type="Node2D" parent="."]
+modulate = Color(1, 1, 1, 0.462745)
+z_index = 1
+position = Vector2(232, 56)
+
+[node name="Label" type="Label" parent="InteractHint"]
+z_index = 1
+offset_left = -2.0
+offset_top = -10.0
+offset_right = 38.0
+offset_bottom = 13.0
+theme = ExtResource("8_gee14")
+text = "Z"
+label_settings = SubResource("LabelSettings_vtaks")
+
+[editable path="InteractionAreas/CustomerArea"]
+[editable path="InteractionAreas/CrateArea"]
+[editable path="InteractionAreas/CrateArea2"]
+[editable path="InteractionAreas/CrateArea3"]
+[editable path="InteractionAreas/CrateArea4"]
+[editable path="InteractionAreas/CrateArea5"]
+[editable path="InteractionAreas/CrateArea6"]

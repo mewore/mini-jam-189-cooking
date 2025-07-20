@@ -42,7 +42,7 @@ color = Color(0.862745, 0.909804, 0.933333, 1)
 polygon = PackedVector2Array(0, 0, 288, 0, 288, 192, 0, 192)
 
 [node name="FadeOutTimer" type="Timer" parent="."]
-wait_time = 0.5
+wait_time = 1.5
 one_shot = true
 
 [connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]

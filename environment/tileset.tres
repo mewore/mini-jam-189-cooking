@@ -6,10 +6,8 @@
 texture = ExtResource("1_djt2r")
 texture_region_size = Vector2i(8, 8)
 1:0/0 = 0
+0:1/0 = 0
 
 [resource]
 tile_size = Vector2i(8, 8)
-terrain_set_0/mode = 0
-terrain_set_0/terrain_0/name = "Terrain 0"
-terrain_set_0/terrain_0/color = Color(0.113725, 0.113725, 0.113725, 1)
 sources/0 = SubResource("TileSetAtlasSource_qsi2p")
