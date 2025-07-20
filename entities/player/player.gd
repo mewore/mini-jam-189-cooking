@@ -66,7 +66,7 @@ func _unhandled_input(event: InputEvent) -> void:
 	for dir_index in range(direction_priority.size()):
 		var direction: Vector2i = direction_priority[dir_index]
 		var input_name: StringName = DIRECTION_INPUTS.get(direction)
-		if event.is_action_pressed(input_name):
+		if event.is_action_pressed(input_name) and event.get_action_strength(input_name) >= 1.0:
 			dir_index_to_hoist = dir_index
 			if steps_remaining > 0:
 				step_queue.append(direction)
