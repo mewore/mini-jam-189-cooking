@@ -1,7 +1,12 @@
-[gd_scene load_steps=3 format=3 uid="uid://dpnujkdbefr4f"]
+[gd_scene load_steps=8 format=3 uid="uid://dpnujkdbefr4f"]
 
 [ext_resource type="Theme" uid="uid://cfi3jnjmt80" path="res://ui/fonts/menu.tres" id="1_l6cm7"]
 [ext_resource type="Texture2D" uid="uid://cvxwhfhilamat" path="res://ui/crucial/simcity2000monster.png" id="2_ekxnf"]
+[ext_resource type="Texture2D" uid="uid://bpnv0548vmh1n" path="res://ui/buttons/start-button/start-main.png" id="3_tbmy8"]
+[ext_resource type="Texture2D" uid="uid://c8fmk6ilheeq1" path="res://ui/buttons/start-button/start-pressed.png" id="4_jk1qb"]
+[ext_resource type="Texture2D" uid="uid://c7bo3s5ll6y72" path="res://ui/buttons/start-button/start-hover.png" id="5_5dd4i"]
+[ext_resource type="Script" uid="uid://be8kq6qfnn6dc" path="res://ui/buttons/start-button/start_button.gd" id="6_oa1go"]
+[ext_resource type="AudioStream" uid="uid://b7kck3aslbjk8" path="res://ui/buttons/start-button/sfx-click.wav" id="6_rtw2f"]
 
 [node name="MainMenu" type="VBoxContainer"]
 anchors_preset = 15
@@ -16,8 +21,14 @@ position = Vector2(139, 144)
 rotation = -0.289732
 texture = ExtResource("2_ekxnf")
 
-[node name="Button" type="Button" parent="."]
-custom_minimum_size = Vector2(120, 0)
+[node name="StartButton" type="TextureButton" parent="."]
 layout_mode = 2
 size_flags_horizontal = 4
-text = "Start"
+texture_normal = ExtResource("3_tbmy8")
+texture_pressed = ExtResource("4_jk1qb")
+texture_hover = ExtResource("5_5dd4i")
+script = ExtResource("6_oa1go")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="StartButton"]
+stream = ExtResource("6_rtw2f")
+playback_type = 1

@@ -1,3 +1,6 @@
 # Default ignored files
 /shelf/
 /workspace.xml
+#macOS please stop harassing ppl with this file ty
+.DS_Store
+
