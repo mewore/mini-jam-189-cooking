@@ -2,6 +2,8 @@ class_name DialoguePanel
 
 extends HBoxContainer
 
+signal dialogue_over
+
 @onready var speaker_avatar: TextureRect = get_node("SpeakerAvatar")
 @onready var speaker_name_label: Label = get_node("TextContainer/Title/SpeakerName")
 @onready var dialogue_label: Label = get_node("TextContainer/Content/Dialogue")
@@ -21,9 +23,12 @@ func get_speaker_name(speaker: E.Speaker) -> String:
 	match speaker:
 		E.Speaker.NARRATOR:
 			return ""
+		E.Speaker.CRATE:
+			return "<Examining crate>"
 		E.Speaker.ALIEN:
 			return "G¬ort"
 	return "<UNKNOWN>"
+
 
 func get_speaker_avatar(speaker: E.Speaker) -> Texture2D:
 	match speaker:
@@ -32,6 +37,7 @@ func get_speaker_avatar(speaker: E.Speaker) -> Texture2D:
 		E.Speaker.ALIEN:
 			return alien_avatar
 	return null
+
 
 func display_text(speaker: E.Speaker, text_parts: PackedStringArray) -> void:
 	speaker_avatar.texture = get_speaker_avatar(speaker)
@@ -42,9 +48,11 @@ func display_text(speaker: E.Speaker, text_parts: PackedStringArray) -> void:
 	displayed_char_count = 0
 	hint_label_animator.play()
 
+
 func advance_text() -> void:
+	print("Advancing text... ", text_part_index)
 	if not dialogue_label.text.is_empty() and dialogue_label.visible_characters < dialogue_label.text.length():
-		dialogue_label.visible_characters = dialogue_label.text.length()
+		displayed_char_count = dialogue_label.text.length()
 		return
 
 	text_part_index += 1
@@ -57,20 +65,24 @@ func advance_text() -> void:
 		speaker_avatar.texture = null
 		speaker_name_label.text = ""
 		dialogue_label.text = ""
+		emit_signal("dialogue_over")
+
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_accept") and not dialogue_label.text.is_empty():
 		advance_text()
 		get_viewport().set_input_as_handled()
 
+
 func _ready() -> void:
 	display_text(E.Speaker.NARRATOR, ["\n".join([""])])
 	display_text(E.Speaker.NARRATOR, ["wawa", "wawawawa", "wawaawwa\nwaa"])
+
 
 func _process(delta: float) -> void:
 	displayed_char_count = min(displayed_char_count + text_speed * delta, dialogue_label.text.length())
 	dialogue_label.visible_characters = round(displayed_char_count)
 	if dialogue_label.text.is_empty() and hint_label_animator.is_playing():
 		hint_label_animator.stop()
-		hint_label.visible = false
+		hint_label.modulate.a = 0
 		

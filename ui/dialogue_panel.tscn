@@ -9,24 +9,7 @@
 [sub_resource type="ImageTexture" id="ImageTexture_lbhrr"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_lbhrr"]
-line_spacing = -6.0
-
-[sub_resource type="Animation" id="Animation_fhdyl"]
-resource_name = "hint_blink"
-length = 2.0
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:visible")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [false, true]
-}
+line_spacing = -4.0
 
 [sub_resource type="Animation" id="Animation_nld1p"]
 length = 0.001
@@ -41,6 +24,23 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_fhdyl"]
+resource_name = "hint_blink"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_t7suw"]
@@ -87,6 +87,7 @@ layout_mode = 2
 [node name="TextContainer" type="VBoxContainer" parent="."]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_constants/separation = 0
 
 [node name="Title" type="HBoxContainer" parent="TextContainer"]
 layout_mode = 2
@@ -106,18 +107,21 @@ text = "--:--"
 
 [node name="Content" type="HBoxContainer" parent="TextContainer"]
 layout_mode = 2
+size_flags_vertical = 3
 
 [node name="Dialogue" type="Label" parent="TextContainer/Content"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-text = "Bring me... sustanance. Human. :D"
+text = "This is your training. You will be learning to make meals for my species.
+Welcome to GLORT-cafe."
 label_settings = SubResource("LabelSettings_lbhrr")
 autowrap_mode = 2
 text_overrun_behavior = 3
 
 [node name="Hint" type="Label" parent="TextContainer/Content"]
+modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 size_flags_vertical = 1
 text = "[Z]"

@@ -17,6 +17,8 @@ extends Node2D
 var nearby_area: Node
 var cell_map_node: CellMap
 
+var frozen := false
+
 var direction_priority := [
 	Vector2i.LEFT,
 	Vector2i.RIGHT,
@@ -48,6 +50,8 @@ func _ready() -> void:
 
 
 func is_direction_possible(direction: Vector2i) -> bool:
+	if frozen:
+		return false
 	return cell_map_node.is_cell_free(current_cell + move_direction + direction) if cell_map_node else true
 
 

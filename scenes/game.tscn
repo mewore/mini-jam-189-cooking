@@ -155,7 +155,7 @@ position = Vector2(24, 72)
 speaker = 3
 
 [node name="HintPos" parent="InteractionAreas/CrateArea" index="0"]
-position = Vector2(-16, -16)
+position = Vector2(12, -20)
 
 [node name="CollisionShape2D" parent="InteractionAreas/CrateArea" index="1"]
 shape = SubResource("CircleShape2D_vtaks")
@@ -215,6 +215,8 @@ offset_bottom = 13.0
 theme = ExtResource("8_gee14")
 text = "Z"
 label_settings = SubResource("LabelSettings_vtaks")
+
+[connection signal="dialogue_over" from="DialoguePanel" to="." method="_on_dialogue_panel_dialogue_over"]
 
 [editable path="InteractionAreas/CustomerArea"]
 [editable path="InteractionAreas/CrateArea"]

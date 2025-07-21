@@ -5,4 +5,5 @@ enum Speaker {
 	ALIEN,
 	CUSTOMER,
 	CRATE,
+	INGREDIENT,
 }
